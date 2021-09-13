@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ .Title }}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-print-color-adjust: exact;
+      }
+
+      /*@media print {*/
+        img {
+          max-width: 100%;
+        }
+
+        @media print {
+          footer {
+            position: fixed;
+            bottom: 0;
+          }
+          @page {
+            @bottom-center{
+              content: "hello world";
+              background-color: yellow;
+              margin-top: 20px;
+              font-family: 'Arial';
+              color: black;
+              width: 222px;
+              height: 50px;
+            }
+          }
+        }
+
+        div.frontcover {
+          page-break-after: always;
+          page-break-inside: avoid;
+          width: 100%;
+          height: 100%; 
+        }
+        @media print {
+          
+        }
+
+   
+
+        @media print {
+          @page {
+            size: A4;
+            margin: auto;
+            -webkit-print-color-adjust: exact;
+
+            @bottom-right-corner {
+              content: "hello world";
+              border: 1px gray solid;
+            }
+            @bottom-center {
+              content: "hello world";
+              border: 1px gray solid;
+            }
+            @top-center {
+              content: "hello world";
+              border: 1px gray solid;
+            }
+            @left-middle {
+              content: "hello world";
+              border: 1px gray solid;
+            }
+          }
+          div {
+            border: 1px gray solid;
+          }
+
+          p {
+            border: 1px red solid;
+          }
+          h1, h2, h3, h4, h5, img {
+            font-weight: bold;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+          }
+
+          h1+p, h2+p, h3+p {
+            page-break-before: avoid;
+          }
+
+          figure {
+            page-break-inside: avoid;
+          }
+
+          table tr {
+            page-break-inside: avoid;
+          }
+        }
+
+        
+
+        div.frontcover:before {
+          size: cover;
+          content: url({{ .CoverImageURL }});
+        }
+
+        div.frontcover h1 {
+          position: absolute;
+          text-align: center;
+          top: 2in;
+          left: 0;
+          color: white;
+          font-size: 90pt;
+          width: 100%;
+        }
+        
+        div.content {
+          max-width: 10.25in;
+        }
+
+        div.two-column-text {
+          max-width: 8.25in;
+          margin: 0 auto;
+          column-width: 3.5in;
+          column-gap: 3em;
+          column-rule: 1px solid #ccc;
+        }
+      /*}*/
+      div.block-center {
+        text-align: center;
+        page-break-inside: avoid;
+      }
+      canvas {
+        border: 1px yellow solid;
+      }
+      td {
+        width: 50%;
+      }
+      figcaption {
+        margin-top: 0.1in;
+        text-align: center;
+      }
+
+    </style>
+
+    
+    <div class="frontcover">
+      <h1>{{ .Title }}</h1>
+    </div>
+    
+    <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta non. Sit amet facilisis magna etiam tempor orci eu. Nulla pharetra diam sit amet nisl suscipit. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Sagittis nisl rhoncus mattis rhoncus urna. Urna nunc id cursus metus aliquam eleifend. Nulla aliquet enim tortor at auctor. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Eget duis at tellus at urna condimentum mattis pellentesque id. Felis eget nunc lobortis mattis aliquam. Mauris augue neque gravida in fermentum et sollicitudin ac. Viverra tellus in hac habitasse platea dictumst vestibulum. A cras semper auctor neque vitae. Magna ac placerat vestibulum lectus mauris ultrices eros in. Sagittis vitae et leo duis ut diam quam nulla.
+        </p>
+        <p>
+          Risus sed vulputate odio ut enim blandit. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu. Odio aenean sed adipiscing diam donec adipiscing. Adipiscing enim eu turpis egestas. Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Enim neque volutpat ac tincidunt vitae semper quis lectus. Malesuada fames ac turpis egestas integer eget aliquet. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Ante in nibh mauris cursus mattis. Cras fermentum odio eu feugiat.
+        </p>
+      <div class="block-center">
+        <figure>
+        <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&h=1080&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit">
+        <figcaption>A cute cat sitting on a staircase.</figcaption>
+        </figure>
+      </div>
+      <div class="block-center">
+        <figure>
+        <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&h=1080&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit">
+        <figcaption>A cute cat sitting on a staircase.</figcaption>
+        </figure>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta non. Sit amet facilisis magna etiam tempor orci eu. Nulla pharetra diam sit amet nisl suscipit. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Sagittis nisl rhoncus mattis rhoncus urna. Urna nunc id cursus metus aliquam eleifend. Nulla aliquet enim tortor at auctor. Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Eget duis at tellus at urna condimentum mattis pellentesque id. Felis eget nunc lobortis mattis aliquam. Mauris augue neque gravida in fermentum et sollicitudin ac. Viverra tellus in hac habitasse platea dictumst vestibulum. A cras semper auctor neque vitae. Magna ac placerat vestibulum lectus mauris ultrices eros in. Sagittis vitae et leo duis ut diam quam nulla.
+      </p>
+
+      <table>
+        <tr>
+          <td>
+            <figure>
+              <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit" >
+              <figcaption>A cute cat.</figcaption>
+            </figure>
+          </td>
+          <td>
+            <figure>
+            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit" >
+            <figcaption>A cute cat.</figcaption>
+            </figure>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <figure>
+              <canvas id="myChart"></canvas>
+              <figcaption>A simple line chart</figcaption>
+            </figure>
+          </td>
+          <td>
+            <figure>
+              <canvas id="myBubbleChart"></canvas>
+              <figcaption>A simple bubble chart</figcaption>
+            </figure>
+          </td>
+        </tr>
+      </table>  
+    </div>
+    </div>
+    <script>
+      const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+      ];
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+      };
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+
+
+      const bubbleChartData = {
+        labels: [
+          'Eating',
+          'Drinking',
+          'Sleeping',
+          'Designing',
+          'Coding',
+          'Cycling',
+          'Running'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [65, 59, 90, 81, 56, 55, 40],
+          fill: true,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgb(255, 99, 132)',
+          pointBackgroundColor: 'rgb(255, 99, 132)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+          label: 'My Second Dataset',
+          data: [28, 48, 40, 19, 96, 27, 100],
+          fill: true,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgb(54, 162, 235)',
+          pointBackgroundColor: 'rgb(54, 162, 235)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }]
+      };
+
+      const bubbleChartConfig = {
+        type: 'radar',
+        data: bubbleChartData,
+        options: {
+          elements: {
+            line: {
+              borderWidth: 3
+            }
+          }
+        },
+      };
+
+      var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+
+      var bubbleChart = new Chart(
+        document.getElementById('myBubbleChart'),
+        bubbleChartConfig
+      );
+    </script>
+  </body>
+</html>
